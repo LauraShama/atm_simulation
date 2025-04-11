@@ -1,9 +1,9 @@
 import getpass
 
 users = [
-    {"username": "admin", "password": "admin123", "balance": 1000, "role": "admin"},
-    {"username": "user1", "password": "user123", "balance": 500, "role": "user"},
-    {"username": "user2", "password": "user456", "balance": 300, "role": "user"},
+    {"username": "admin", "password": "admin01", "balance": 1000, "role": "admin"},
+    {"username": "user1", "password": "user01", "balance": 500, "role": "user"},
+    {"username": "user2", "password": "user02", "balance": 300, "role": "user"},
 ]
 
 current_user = None
@@ -19,8 +19,8 @@ def main():
     print("Welcome to the ATM Simulation!")
     while current_user is None:
         print("\nEnter your username and password to log in.")
-        username = input("username: ")
-        password = getpass.getpass("password: ")
+        username = input("Username: ")
+        password = getpass.getpass("Password: ")
         user = find_user_by_username(username)
         if user and user["password"] == password:
             print("Login successful!")
