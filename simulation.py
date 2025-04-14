@@ -30,6 +30,8 @@ def main():
             print("Invalid username or password. Please try again.")
     print("Thank you for using the ATM!")
 
+
+
 def login(users):
     max_attempts =3
     attempts = 0
@@ -54,14 +56,14 @@ def admin_menu():
         print("3. Logout")
         print("4. Exit ATM")
         choice = input("Select an option: ")
-        if choice == "1":
+        if choice == 1:
             create_user()
-        elif choice == "2":
+        elif choice == 2:
             view_users()
-        elif choice == "3":
+        elif choice == 3:
             logout()
             break
-        elif choice == "4":
+        elif choice == 4:
             exit_atm()
             break
         else:
@@ -77,21 +79,22 @@ def user_menu():
         print("5. Update Profile")
         print("6. Logout")
         print("7. Exit ATM")
-        choice = input("Select an option: ")
-        if choice == "1":
+        choice = int(input("Select an option: "))
+        print(choice)
+        if choice == 1:
             deposit(current_user)
-        elif choice == "2":
+        elif choice == 2:
             withdraw(current_user)
-        elif choice == "3":
+        elif choice == 3:
             transfer(current_user)
-        elif choice == "4":
+        elif choice == 4:
             check_balance(current_user)
-        elif choice == "5":
+        elif choice == 5:
             update_profile(current_user)
-        elif choice == "6":
+        elif choice == 6:
             logout()
             break
-        elif choice == "7":
+        elif choice == 7:
             exit_atm()
             break
         else:
@@ -152,7 +155,8 @@ def transfer(current_user):
                 if recipient_user != current_user:
                     current_user["balance"] -= amount
                     recipient_user["balance"] += amount
-                    print("Transferred {amount} from {current_user['username']} to {recipient_username}.")
+                    print("amount: ",amount)
+                    print("recipient_user: ",recipient_user)
                 else:
                     print("Cannot transfer to your own account.")
             else:
@@ -163,7 +167,7 @@ def transfer(current_user):
         print("Invalid amount. Please enter a positive value.")
 
 def check_balance(current_user):
-    print("\n{current_user['username']}'s Balance: {current_user['balance']}")
+    print(current_user['balance'])
 
 def update_profile(current_user):
     while True:
@@ -173,18 +177,18 @@ def update_profile(current_user):
         print("3. Back to User Menu")
         choice = input("Select an option: ")
 
-        if choice == "1":
+        if choice == 1:
             new_password = getpass.getpass("Enter new password: ")
             current_user["password"] = new_password
             print("Password updated successfully.")
-        elif choice == "2":
+        elif choice == 2:
             new_username = input("Enter new username: ")
             if find_user_by_username(new_username):
                 print("Username already exists. Please try again.")
             else:
                 current_user["username"] = new_username
                 print("Username updated successfully.")
-        elif choice == "3":
+        elif choice == 3:
             break
         else:
             print("Invalid choice. Please try again.")
